@@ -1,0 +1,2 @@
+include ghat/*.js
+include ghat/*.html

@@ -1,0 +1,139 @@
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width">
+		<link crossorigin="anonymous" media="all" integrity="sha512-5C2YsS2pynDIt41BlOrGn3llTAZXy9q2s3368OiDNkkNYfyW827k1ErbV9pRNxdQEBUGIKOpRwWrBlSKO2iGbA==" rel="stylesheet" href="https://github.githubassets.com/assets/frameworks-e42d98b12da9ca70c8b78d4194eac69f.css">
+		<link crossorigin="anonymous" media="all" integrity="sha512-otrgloSdS0rCdjcAPxfYLLXIQlyX1SeG0D4TwNtBRL/6z4asGD20Wk+CLqTBH6ZnAAt7cvO3cHigJXTKHUtQHA==" rel="stylesheet" href="https://github.githubassets.com/assets/github-a2dae096849d4b4ac27637003f17d82c.css">
+	
+		<link rel="mask-icon" href="https://github.githubassets.com/pinned-octocat.svg" color="#000000">
+		<link rel="alternate icon" class="js-site-favicon" type="image/png" href="https://github.githubassets.com/favicons/favicon.png">
+		<link rel="icon" class="js-site-favicon" type="image/svg+xml" href="https://github.githubassets.com/favicons/favicon.svg">
+		
+		<title>Green Hat Decorator</title>
+
+		<style>
+			.tooltip {
+				/* position: relative; */
+				display: inline-block;
+				border-bottom: 1px dotted black;
+				margin-bottom:40px;
+			}
+
+			.tooltip-text {
+				width: 200px;
+				color: #fff;
+				text-align: center;
+				border-radius: 6px;
+				padding: 5px 5px;
+				z-index: 1;
+			}
+			
+			.rect-day {
+				/* fill: rgba(27, 31, 35, 0.06); */
+				shape-rendering: geometricPrecision;
+				outline: 1px solid rgba(27, 31, 35, 0.06);
+				outline-offset: -1px;
+			}
+
+			#return {
+				padding-left: 25px;
+			}
+
+			#svg_code, #operation-area {
+				width: 100%;
+				/* margin:10px */
+			}
+		</style>
+	</head>
+
+	<body>
+		<center>
+			<div id="choice_area" style="margin:200px">
+				<a id="c_1">1. Create a blank contribution table</a>
+				<br>
+				<a id="c_2">2. Paste your contribution table</a>
+			</div>
+		
+			<div id="blank_area" class="input_area" style="display:None;margin:200px;">
+				<label for="selected_year">Year: </label>
+				<input id="selected_year" type="number" min="1970" max="3000" required>
+				<button type="submit" class="display">Display</button>
+			</div>
+			
+			<div id="paste_area" class="input_area" style="display:None;margin:100px;">
+				<textarea id="input_code" placeholder="Paste your svg at here" rows="20" cols="80"></textarea>
+				<div style="margin:10px">
+					<button class="display">Display</button>
+				</div>
+			</div>
+		</center>
+		<div id="svg" style="display:None;margin-top:100px;">
+			<div id="return">
+				<a href="">Return</a>
+			</div>
+
+			<div>
+				<p style="text-align:center"><span id="contribution_num">0</span> contributions in <span id="year"></span></p>
+			</div>
+			
+			<center>
+				<div class="tooltip">
+					<span class="tooltip-text" id="tooltip"></span>
+				</div>
+			</center>
+
+			<div class="border py-2 graph-before-activity-overview">
+				<div class="js-calendar-graph mx-md-2 mx-3 d-flex flex-column flex-items-end flex-xl-items-center overflow-hidden pt-1 is-graph-loading graph-canvas ContributionCalendar height-full text-center">
+					<div id="svg_code">
+					</div>
+
+					<span id="alert" style="color:red;"></span>
+
+					<div class="width-full f6 px-0 px-md-5 py-1">
+						<div class="float-left">
+							<a href="https://docs.github.com/articles/why-are-my-contributions-not-showing-up-on-my-profile" class="Link--muted">
+							Learn how we count contributions</a>.
+						</div>
+						<div class="float-right color-text-secondary" title="A summary of pull requests, issues opened, and commits to the default and gh-pages branches.">
+							Less
+							<svg width="10" height="10" class="d-inline-block">
+								<rect width="10" height="10" class="ContributionCalendar-day" rx="2" ry="2" data-level="0"></rect>
+							</svg>
+							<svg width="10" height="10" class="d-inline-block">
+								<rect width="10" height="10" class="ContributionCalendar-day" rx="2" ry="2" data-level="1"></rect>
+							</svg>
+							<svg width="10" height="10" class="d-inline-block">
+								<rect width="10" height="10" class="ContributionCalendar-day" rx="2" ry="2" data-level="2"></rect>
+							</svg>
+							<svg width="10" height="10" class="d-inline-block">
+								<rect width="10" height="10" class="ContributionCalendar-day" rx="2" ry="2" data-level="3"></rect>
+							</svg>
+							<svg width="10" height="10" class="d-inline-block">
+								<rect width="10" height="10" class="ContributionCalendar-day" rx="2" ry="2" data-level="4"></rect>
+							</svg>
+							More
+						</div>
+					</div>
+				
+					<div id="operation-area">
+						<!-- <label>Change bacground color</label><span> <img id="bg_indicator" width="20px" height="20px" style="background-color: #ebedf0;position:relative;top:4px"></img></span> -->
+						<!-- <select id="change_bg" name="change_bg"> -->
+							<!-- <option value="white" style="background-color:#ebedf0">0</option> -->
+							<!-- <option value="white" style="background-color:#c6e48b">1</option> -->
+							<!-- <option value="white" style="background-color:#7bc96f">2</option> -->
+							<!-- <option value="white" style="background-color:#239a3b">3</option> -->
+							<!-- <option value="white" style="background-color:#196127">4</option> -->
+						<!-- </select> -->
+						<!-- <br> -->
+						<!-- <br> -->
+						<button id="reset">Reset</button>
+						<button id="generate">Generate date file</button>
+					</div>
+				</div>
+			</div>
+		</div>
+		
+		<script src="https://code.jquery.com/jquery-3.6.0.slim.min.js" integrity="sha256-u7e5khyithlIdTpu22PHhENmPcRdFiHRjhAuHcs05RI=" crossorigin="anonymous"></script>
+		<script src="s.js"></script>
+	</body>
+</html>
