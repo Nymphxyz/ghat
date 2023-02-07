@@ -16,7 +16,10 @@ def get_date_string(date_str):
 
 def get_commit_command(date_str):
     curdate = get_date_string(date_str)
-    command = "set GIT_AUTHOR_DATE='" + curdate + "'&& set GIT_COMMITTER_DATE='" + curdate + "'&& git commit -m 'update'"
+    # if you are macOS use this line ⬇️
+    command = "GIT_AUTHOR_DATE='" + curdate + "' GIT_COMMITTER_DATE='" + curdate + "' git commit -m 'update' --date '" + curdate +"'"
+    
+    # command = "set GIT_AUTHOR_DATE='" + curdate + "'&& set GIT_COMMITTER_DATE='" + curdate + "'&& git commit -m 'update'"
     return command
 
 
